@@ -57,7 +57,7 @@ const Header = () => {
         <span className="sr-only">홈</span>
       </a>
       <div className="w-full flex-1">
-        <h1 className="text-lg font-semibold">수행평가 안내</h1>
+        <h1 className="text-lg font-semibold">systeam 동아리</h1>
       </div>
       <div>
         <button className="bg-gray/40 text-gray/40 px-4 py-2 rounded" onClick={handleLoginLogout}>

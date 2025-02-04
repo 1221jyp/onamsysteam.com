@@ -38,6 +38,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
-app.listen(5500, () => {
-  console.log("Server running in port 5500");
+app.listen(5600, () => {
+  console.log("Server running in port 5600");
 });

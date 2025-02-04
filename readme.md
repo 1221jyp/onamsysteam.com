@@ -1,8 +1,8 @@
-# 수행평가 공지사이트
+# 시스팀 동아리 웹페이지
 
-## 사이트 주소 : https://1uton.com
+## 사이트 주소 : https://onamsysteam.com
 
-## 개발환경 : localhost:5500
+## 개발환경 : localhost:5600
 
 ### 프로덕션 환경에서 실행시킬 명령어
 
@@ -25,8 +25,8 @@
 ### 도커허브에 업로드
 
 ```
-    docker tag expressjs-react-server 1221jyp/luton:latest
-    docker push 1221jyp/luton:latest
+    docker tag onamsysteam.com-server 1221jyp/onamsysteam:latest
+    docker push 1221jyp/onamsysteam:latest
 ```
 
 ### 루트 폴더에서 client 수정했을때
@@ -38,11 +38,11 @@
 ### 서버에서 pull 받아오기
 
 ```
-    docker pull 1221jyp/luton:latest
+    docker pull 1221jyp/onamsysteam:latest
 ```
 
 ### 서버에서 WAS 키기
 
 ```
-    docker run -p 5500:5500 1221jyp/luton:latest
+    docker run -p 5500:5500 1221jyp/onamsysteam:latest
 ```
