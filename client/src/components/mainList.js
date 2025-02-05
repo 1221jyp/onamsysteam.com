@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Batsal = () => {
+const MainList = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Batsal = () => {
   return (
     <div class="grid gap-6">
       <div>
-        <h2 class="font-semibold text-lg md:text-xl">다가오는 평가</h2>
+        <h2 class="font-semibold text-lg md:text-xl">동아리 소개</h2>
         <div class="grid gap-4 mt-4">
           {data.map((item) => (
             <div
@@ -47,4 +47,4 @@ const Batsal = () => {
     </div>
   );
 };
-export default Batsal;
+export default MainList;
