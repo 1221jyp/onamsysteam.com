@@ -25,7 +25,7 @@
 ### 도커허브에 업로드
 
 ```
-    docker tag onamsysteam.com-server 1221jyp/onamsysteam:latest
+    docker tag onamsysteamcom-server 1221jyp/onamsysteam:latest
     docker push 1221jyp/onamsysteam:latest
 ```
 
@@ -44,5 +44,11 @@
 ### 서버에서 WAS 키기
 
 ```
-    docker run -p 5500:5500 1221jyp/onamsysteam:latest
+    docker run -p -d 5600:5600 1221jyp/onamsysteam:latest
+```
+
+### SSL 인증서 발급
+
+```
+    sudo certbot certonly --manual --preferred-challenges=dns -d onamsysteam.com -d www.onamsysteam.com
 ```
