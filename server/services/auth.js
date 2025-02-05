@@ -73,8 +73,7 @@ router.get("/login/redirect", async (req, res) => {
 
       // 세션에 사용자 정보 저장
       req.session.user = { id: googleId, email, name, picture };
-      console.log("세션에 저장된 사용자 정보:", req.session.user);
-      console.log("세션에 저장된 사용자 정보:", req.session); // 로그 추가
+      console.log("로그인 발생 :", req.session.user);
 
       // 로그인 후 / 주소로 리다이렉트
       res.redirect("/");
@@ -129,7 +128,6 @@ router.get("/signup/redirect", async (req, res) => {
 
 // 로그인 상태 확인
 router.get("/api/check-login", (req, res) => {
-  console.log("로그인정보", req.session.user);
   if (req.session && req.session.user) {
     res.json({ loggedIn: true });
   } else {

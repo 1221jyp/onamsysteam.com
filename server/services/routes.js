@@ -6,7 +6,7 @@ const connection = require("../db");
 // GET 라우트
 router.get("/api/pa", (req, res) => {
   console.log("API 요청 받음");
-  connection.query("SELECT * FROM PA", (error, result) => {
+  connection.query("SELECT * FROM test", (error, result) => {
     if (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });

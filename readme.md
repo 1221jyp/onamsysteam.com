@@ -13,7 +13,7 @@
 ### 개발 환경에서 실행시킬 명령어
 
 ```
-    docker compose up
+    make dev
 ```
 
 ### 도커 이미지 빌드 명령어
@@ -25,8 +25,7 @@
 ### 도커허브에 업로드
 
 ```
-    docker tag onamsysteamcom-server 1221jyp/onamsysteam:latest
-    docker push 1221jyp/onamsysteam:latest
+    make up
 ```
 
 ### 루트 폴더에서 client 수정했을때
@@ -44,7 +43,7 @@
 ### 서버에서 WAS 키기
 
 ```
-    docker run -p -d 5600:5600 1221jyp/onamsysteam:latest
+    docker run -d -p 5600:5600 1221jyp/onamsysteam:latest
 ```
 
 ### SSL 인증서 발급
@@ -52,3 +51,7 @@
 ```
     sudo certbot certonly --manual --preferred-challenges=dns -d onamsysteam.com -d www.onamsysteam.com
 ```
+
+### 구글 oauth 설정 주소
+
+https://console.cloud.google.com/apis/
