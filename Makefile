@@ -1,6 +1,9 @@
 build:
 	cd client && npm run build
 
+start:
+	cd client && npm start
+
 dev:
 	docker compose up
 up:

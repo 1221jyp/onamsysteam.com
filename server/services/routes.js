@@ -18,7 +18,7 @@ router.get("/api/pa", (req, res) => {
 });
 
 // POST 라우트
-router.post("/api/post", (req, res) => {
+router.post("/api/enroll", (req, res) => {
   const userName = req.session.user.name;
   const formData = req.body;
   console.log("Received form data:", formData);
