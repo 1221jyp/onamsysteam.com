@@ -19,6 +19,9 @@ const GOOGLE_USERINFO_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
 
 // 로그인 기능
 router.get("/login", (req, res) => {
+  // 로그인 전에 현재 URL을 세션에 저장
+  req.session.redirectTo = req.query.redirectTo || "/"; // 기본적으로 '/'로 리다이렉트
+
   let url = "https://accounts.google.com/o/oauth2/v2/auth";
   url += `?client_id=${GOOGLE_CLIENT_ID}`;
   url += `&redirect_uri=${GOOGLE_LOGIN_REDIRECT_URI}`;
@@ -75,8 +78,10 @@ router.get("/login/redirect", async (req, res) => {
       req.session.user = { id: googleId, email, name, picture };
       console.log("로그인 발생 :", req.session.user);
 
-      // 로그인 후 / 주소로 리다이렉트
-      res.redirect("/");
+      // 로그인 후 원래 요청한 URL로 리다이렉트
+      const redirectTo = req.session.redirectTo || "/";
+      delete req.session.redirectTo; // 리다이렉션 후 세션에서 URL을 제거
+      res.redirect(redirectTo);
     });
   } catch (error) {
     console.error("로그인 오류:", error);

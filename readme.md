@@ -40,6 +40,12 @@
     docker pull 1221jyp/onamsysteam:latest
 ```
 
+### 서버에서 옛날 이미지 삭제
+
+```
+    docker rmi $(docker images --filter "dangling=true" -q)
+```
+
 ### 서버에서 WAS 키기
 
 ```

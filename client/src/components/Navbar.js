@@ -21,6 +21,12 @@ const Navbar = () => {
     checkLoginStatus();
   }, []);
 
+  // 로그인 요청을 보낼 때 리디렉션할 URL 설정
+  const handleLoginRedirect = () => {
+    const redirectUrl = location.pathname; // 현재 경로를 리디렉션 URL로 설정
+    window.location.href = `/login?redirectTo=${encodeURIComponent(redirectUrl)}`;
+  };
+
   const handleLoginLogout = () => {
     if (isLoggedIn) {
       // 로그아웃 처리
@@ -28,24 +34,25 @@ const Navbar = () => {
         .post("/api/logout") // 로그아웃 API 호출
         .then(() => {
           setIsLoggedIn(false);
+          window.location.reload();
         })
         .catch((error) => {
           console.error("로그아웃 오류:", error);
         });
     } else {
       // 로그인 처리 (구글 로그인으로 리다이렉트)
-      window.location.href = "/login"; // 로그인 페이지로 리다이렉트
+      handleLoginRedirect(); // 로그인 리디렉션 호출
     }
   };
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#!">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container">
+        <a className="navbar-brand" href="#!">
           시스팀
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -53,11 +60,11 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item">
               <a
                 className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
                 aria-current="page"
@@ -66,7 +73,7 @@ const Navbar = () => {
                 홈
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
                 className={`nav-link ${location.pathname === "/enroll" ? "active" : ""}`}
                 href="/enroll"
@@ -74,8 +81,8 @@ const Navbar = () => {
                 동아리 신청하기
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" onClick={handleLoginLogout}>
+            <li className="nav-item">
+              <a className="nav-link" onClick={handleLoginLogout}>
                 {isLoggedIn ? "로그아웃" : "로그인"}
               </a>
             </li>

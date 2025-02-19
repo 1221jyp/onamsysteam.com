@@ -16,19 +16,11 @@ function Enroll() {
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginError, setLoginError] = useState(false);
   const [successMessage, setSuccessMessage] = useState(""); // 성공 메시지를 위한 상태 추가
 
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 페이지 리디렉션
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleRadioChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -43,14 +35,13 @@ function Enroll() {
   };
 
   useEffect(() => {
-    // 로그인 상태 확인 API 호출~
+    // 로그인 상태 확인 API 호출
     const checkLoginStatus = async () => {
       try {
         const response = await axios.get("/api/check-login");
         setIsLoggedIn(response.data.loggedIn);
       } catch (error) {
         console.error("로그인 상태 확인 오류:", error);
-        setLoginError(true); // 로그인 오류 발생 시
       }
     };
 
@@ -62,14 +53,13 @@ function Enroll() {
 
     // 로그인하지 않은 경우 알림 표시
     if (!isLoggedIn) {
-      setLoginError(true);
       alert("로그인 후에 게시물을 작성할 수 있습니다.");
       return;
     }
 
-    const { number, name, phone, career, programmingExp, plan, additionalAnswer, bio, question } =
-      formData;
+    const { number, name, phone, career, programmingExp, plan, additionalAnswer, bio } = formData;
 
+    // 각 입력 값 검증
     if (
       number.trim() === "" ||
       name.trim() === "" ||
@@ -80,6 +70,24 @@ function Enroll() {
       bio === ""
     ) {
       alert("모든 정보를 작성하세요.");
+      return;
+    }
+
+    // 학번은 5자리 숫자만 허용
+    if (!/^\d{5}$/.test(number)) {
+      alert("학번은 정확히 5자리 숫자만 입력할 수 있습니다.");
+      return;
+    }
+
+    // 이름은 한글, 영문, 공백만 허용
+    if (!/^[가-힣a-zA-Z\s]+$/.test(name)) {
+      alert("이름은 한글, 영문, 공백만 입력할 수 있습니다.");
+      return;
+    }
+
+    // 전화번호는 10자리 또는 11자리 숫자만 허용
+    if (!/^\d{10,11}$/.test(phone)) {
+      alert("연락처는 10자리 또는 11자리 숫자로 입력해야 합니다.");
       return;
     }
 
@@ -115,7 +123,7 @@ function Enroll() {
     <div style={{ backgroundColor: "#f8f9fa" }}>
       <div className="container py-5">
         {/* 로그인되지 않았을 경우 상단에 고정된 경고 메시지 */}
-        {loginError && !isLoggedIn && (
+        {!isLoggedIn && (
           <div className="alert alert-warning w-100 mb-4" role="alert">
             <strong>로그인 후에 신청이 가능합니다!</strong> 로그인을 먼저 한 후 다시 시도해주세요.
           </div>
@@ -210,7 +218,7 @@ function Enroll() {
                 id="yes"
                 name="programmingExp"
                 value="1"
-                onChange={handleRadioChange}
+                onChange={handleChange}
                 checked={formData.programmingExp === "1"}
                 className="form-check-input"
               />
@@ -224,7 +232,7 @@ function Enroll() {
                 id="no"
                 name="programmingExp"
                 value="0"
-                onChange={handleRadioChange}
+                onChange={handleChange}
                 checked={formData.programmingExp === "0"}
                 className="form-check-input"
               />
@@ -246,7 +254,7 @@ function Enroll() {
                 id="yes"
                 name="plan"
                 value="1"
-                onChange={handleRadioChange}
+                onChange={handleChange}
                 checked={formData.plan === "1"}
                 className="form-check-input"
               />
@@ -260,7 +268,7 @@ function Enroll() {
                 id="no"
                 name="plan"
                 value="0"
-                onChange={handleRadioChange}
+                onChange={handleChange}
                 checked={formData.plan === "0"}
                 className="form-check-input"
               />
