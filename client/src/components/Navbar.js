@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // 로그인 상태 확인 API 호출
@@ -56,12 +58,19 @@ const Navbar = () => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">
+              <a
+                className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+                aria-current="page"
+                href="/"
+              >
                 홈
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/enroll">
+              <a
+                className={`nav-link ${location.pathname === "/enroll" ? "active" : ""}`}
+                href="/enroll"
+              >
                 동아리 신청하기
               </a>
             </li>
