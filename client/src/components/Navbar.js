@@ -46,9 +46,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      {" "}
+      {/* fixed-top 클래스 추가 */}
       <div className="container">
-        <a className="navbar-brand" href="#!">
+        <a className="navbar-brand" href="/">
           시스팀
         </a>
         <button
