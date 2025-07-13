@@ -13,6 +13,7 @@ function Enroll() {
     additionalAnswer: "",
     bio: "",
     question: "",
+    intervDate: "",
   });
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -57,7 +58,8 @@ function Enroll() {
       return;
     }
 
-    const { number, name, phone, career, programmingExp, plan, additionalAnswer, bio } = formData;
+    const { number, name, phone, career, programmingExp, plan, additionalAnswer, bio, intervDate } =
+      formData;
 
     // 각 입력 값 검증
     if (
@@ -67,7 +69,8 @@ function Enroll() {
       career === "" ||
       programmingExp === "" ||
       plan === "" ||
-      bio === ""
+      bio === "" ||
+      intervDate === ""
     ) {
       alert("모든 정보를 작성하세요.");
       return;
@@ -187,6 +190,41 @@ function Enroll() {
                 className="form-control"
                 placeholder="공백없이 입력 ex) 01012341234"
               />
+            </div>
+          </div>
+          <h3 className="h4 mb-4 mt-4">- 면접일</h3>
+
+          <div className="mb-2 bg-white shadow-sm rounded p-4">
+            <label className="form-label" htmlFor="intervDate">
+              희망하는 면접 날짜를 입력해주세요 <span style={{ color: "red" }}>*필수</span>
+            </label>
+            <div className="form-check">
+              <input
+                type="radio"
+                id="yes"
+                name="intervDate"
+                value="1"
+                onChange={handleChange}
+                checked={formData.intervDate === "1"}
+                className="form-check-input"
+              />
+              <label htmlFor="yes" className="form-check-label">
+                3월 12일 (수요일)
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                type="radio"
+                id="no"
+                name="intervDate"
+                value="0"
+                onChange={handleChange}
+                checked={formData.intervDate === "0"}
+                className="form-check-input"
+              />
+              <label htmlFor="no" className="form-check-label">
+                3월 13일 (목요일)
+              </label>
             </div>
           </div>
 

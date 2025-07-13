@@ -3,21 +3,19 @@ import { Footer, Navbar } from "./components/Export";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./mainPage/Home";
 import Enroll from "./mainPage/Enroll";
+import RegiInfo from "./mainPage/regiInfo";
 import NotFound from "./setup/NotFound";
 
 function App() {
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        {" "}
-        {/* flex column으로 설정 */}
         <Navbar />
-        <div className="flex-grow-1">
-          {" "}
-          {/* 콘텐츠가 부족하면 공간을 채워주는 역할 */}
+        <div className="flex-grow-1 mt-5">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/enroll" element={<Enroll />} />
+            <Route path="/regi" element={<RegiInfo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
