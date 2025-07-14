@@ -37,7 +37,7 @@
 ### 서버에서 pull 받아오기
 
 ```
-    docker pull 1221jyp/onamsysteam:latest
+    docker pull onamsysteam/onamsysteam:latest
 ```
 
 ### 서버에서 옛날 이미지 삭제

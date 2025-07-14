@@ -7,4 +7,4 @@ start:
 dev:
 	docker compose up
 up:
-	docker tag onamsysteamcom-server 1221jyp/onamsysteam:latest && docker push 1221jyp/onamsysteam:latest
+	docker tag onamsysteamcom-server onamsysteam/onamsysteam:latest && docker push onamsysteam/onamsysteam:latest

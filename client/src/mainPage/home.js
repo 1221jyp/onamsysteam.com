@@ -82,11 +82,11 @@ function Home() {
         <div class="container my-3">
           <div class="row justify-content-center">
             <div class="col-lg-8">
-              <p class="m-0 text-center">기장 박지율</p>
-              <p class="m-0 text-center">연락처 : 01027244413 / @jiyul1221</p>
+              <p class="m-0 text-center">기장 김오남</p>
+              <p class="m-0 text-center">연락처 : 01012345678 / @onam2007</p>
               <br></br>
-              <p class="m-0 text-center">부기장 서성찬</p>
-              <p class="m-0 text-center">연락처 : 01040891640 / @seo_sky1225</p>
+              <p class="m-0 text-center">부기장 홍길동</p>
+              <p class="m-0 text-center">연락처 : 01087654321 / @onam2008</p>
             </div>
           </div>
         </div>
