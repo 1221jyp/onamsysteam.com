@@ -16,10 +16,16 @@
     make dev
 ```
 
-### 도커 이미지 빌드 명령어
+### 도커 이미지 빌드 명령어 - 맥
 
 ```
     DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose build --no-cache
+```
+
+### 도커 이미지 빌드 명령어 - 윈도우
+
+```
+    $env:DOCKER_DEFAULT_PLATFORM="linux/amd64";
 ```
 
 ### 도커허브에 업로드
